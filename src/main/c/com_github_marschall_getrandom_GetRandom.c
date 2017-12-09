@@ -11,24 +11,29 @@
  */
 #define BUFFER_SIZE 8192
 
+#define GRND_RANDOM 0x02
+
 static inline ssize_t getrandom(void *buf, size_t buflen, unsigned int flags)
 {
   return syscall(__NR_getrandom, buf, buflen, flags);
 }
 
 JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
-  (JNIEnv *env, jclass clazz, jbyteArray bytes, jboolean r)
+  (JNIEnv *env, jclass clazz, jbyteArray bytes, jboolean random)
 {
   _Static_assert (sizeof(jbyte) == sizeof(char), "sizeof(jbyte) == sizeof(char)");
 
   jsize arrayLength = (*env)->GetArrayLength(env, bytes);
   char stackBuffer[BUFFER_SIZE];
   char *buffer = 0;
+  unsigned int flags = 0;
+  size_t bufferLength = sizeof(char) * (size_t) arrayLength;
   
+  // set up buffer
   if (arrayLength > BUFFER_SIZE)
   {
 
-    buffer = malloc(sizeof(char) * (size_t) arrayLength);
+    buffer = malloc(bufferLength);
     if (buffer == NULL) {
       return 0;
     }
@@ -38,6 +43,14 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
     buffer = stackBuffer;
   }
   
+  if (random == JNI_TRUE)
+  {
+    flags |= GRND_RANDOM;
+  }
+  
+  ssize_t written = getrandom(buffer, bufferLength, flags);
+  
+  // clean up buffer if necessary
   if (arrayLength > BUFFER_SIZE)
   {
     free(buffer);
