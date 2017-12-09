@@ -5,6 +5,10 @@ import java.util.Objects;
 
 public class GetRandom extends SecureRandomSpi {
 
+  private static final int EFAULT = 14;
+  private static final int EINTR = 4;
+  private static final int EINVAL = 22;
+
   @Override
   protected void engineSetSeed(byte[] seed) {
     Objects.requireNonNull(seed);

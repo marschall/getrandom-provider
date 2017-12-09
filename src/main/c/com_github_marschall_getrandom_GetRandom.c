@@ -3,6 +3,7 @@
 #include <unistd.h>           /* for syscall() */
 #include <sys/syscall.h>      /* for __NR_* definitions */
 #include <stdlib.h>           /* for malloc and free */
+#include <errno.h>            /* errno */
 
 #include "com_github_marschall_getrandom_GetRandom.h"
 
@@ -28,6 +29,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
   char *buffer = 0;
   unsigned int flags = 0;
   size_t bufferLength = sizeof(char) * (size_t) arrayLength;
+  ssize_t written = 0;
   
   // set up buffer
   if (arrayLength > BUFFER_SIZE)
@@ -47,13 +49,25 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
   {
     flags |= GRND_RANDOM;
   }
-  
-  ssize_t written = getrandom(buffer, bufferLength, flags);
+
+  do
+  {
+    written += getrandom(buffer + written, bufferLength - (size_t) written, flags);
+  }
+  while (written != -1 && written < bufferLength);
   
   // clean up buffer if necessary
   if (arrayLength > BUFFER_SIZE)
   {
     free(buffer);
   }
-  return -1;
+
+  if (written == -1)
+  {
+    return errno;
+  }
+  else
+  {
+    return 0;
+  }
 }
