@@ -4,7 +4,8 @@ import java.security.Provider;
 
 /**
  * A security provider that installs two random number generation
- * algorithms that use the <a href="https://lwn.net/Articles/606141/"></a.
+ * algorithms that use the <a href="https://lwn.net/Articles/606141/">getrandom()</a>
+ * system call.
  *
  * @see <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/HowToImplAProvider.html">How to Implement a Provider in the Java Cryptography Architecture</a>
  */
