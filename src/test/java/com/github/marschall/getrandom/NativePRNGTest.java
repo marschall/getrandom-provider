@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 
 import org.junit.jupiter.api.Test;
 
-public class NativePRNGTest {
+class NativePRNGTest {
 
   @Test
   void nativePRNGNonBlocking() throws GeneralSecurityException {
