@@ -34,6 +34,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
   unsigned int flags = 0;
   size_t bufferLength = sizeof(char) * (size_t) arrayLength;
   ssize_t written = 0;
+  int getRandomErrorCode = 0;
   
   // set up buffer
   if (arrayLength > BUFFER_SIZE)
@@ -59,6 +60,21 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
     written += getrandom(buffer + written, bufferLength - (size_t) written, flags);
   }
   while (written != -1 && written < bufferLength);
+ 
+  if (written == -1)
+  {
+    getRandomErrorCode = errno;
+  }
+  else
+  {
+    (*env)->SetByteArrayRegion(env, bytes, 0, arrayLength, (const jbyte *) buffer);
+    if ((*env)->ExceptionCheck(env) == JNI_TRUE)
+    {
+      /* doens't really matter, ArrayIndexOutOfBoundsException will be thrown upon returning */
+      written = -1;
+      getRandomErrorCode = EFAULT;
+    }
+  }
   
   // clean up buffer if necessary
   if (arrayLength > BUFFER_SIZE)
@@ -68,7 +84,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
 
   if (written == -1)
   {
-    return errno;
+    return getRandomErrorCode;
   }
   else
   {
