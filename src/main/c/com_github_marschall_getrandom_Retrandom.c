@@ -23,7 +23,7 @@ static inline ssize_t getrandom(void *buf, size_t buflen, unsigned int flags)
   return syscall(__NR_getrandom, buf, buflen, flags);
 }
 
-JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_GetRandom_getrandom0
+JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
   (JNIEnv *env, jclass clazz, jbyteArray bytes, jboolean random)
 {
   _Static_assert (sizeof(jbyte) == sizeof(char), "sizeof(jbyte) == sizeof(char)");

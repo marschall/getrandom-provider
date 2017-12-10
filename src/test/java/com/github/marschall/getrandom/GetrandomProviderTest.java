@@ -51,7 +51,7 @@ class GetrandomProviderTest {
     byte[] buffer = new byte[128];
 //    assertThat(buffer, allZeros());
 
-//    secureRandom.nextBytes(buffer);
+    secureRandom.nextBytes(buffer);
 //    assertThat(buffer, not(allZeros()));
   }
 

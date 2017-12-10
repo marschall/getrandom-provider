@@ -17,8 +17,8 @@ final class Retrandom {
     } catch (RuntimeException | Error e) {
       throw e;
     }
-//    String libraryName = System.mapLibraryName("libgetrandom-provider-0.1.0-SNAPSHOT");
-//    System.load("/home/marschall/Documents/workspaces/default/aioj/target/nar/aioj-0.1.0-SNAPSHOT-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni/" + libraryName);
+//    String libraryName = System.mapLibraryName("libgetrandom-provider-0.1.0-SNAPSHOT.so");
+//    System.load("/home/marschall/git/getrandom-provider/target/nar/getrandom-provider-0.1.0-SNAPSHOT-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni" + libraryName);
   }
 
   static void assertInitialized() {
@@ -37,21 +37,17 @@ final class Retrandom {
 
   static void getrandom(byte[] bytes, boolean random) {
     Objects.requireNonNull(bytes);
-    int result = getrandom0(bytes, random);
-    if (result != 0) {
-      switch (result) {
+    int exitCode = getrandom0(bytes, random);
+    if (exitCode != 0) {
+      switch (exitCode) {
         case EFAULT:
-
-          break;
+          throw new IllegalStateException("The address referred to by buf is outside the accessible address space.");
         case EINTR:
-
-          break;
+          throw new IllegalStateException("The call was interrupted by a signal handler.");
         case EINVAL:
-
-          break;
-
+          throw new IllegalStateException("An invalid flag was specified in flags.");
         default:
-          break;
+          throw new IllegalStateException("Encountered unknown exit code: " + exitCode + ".");
       }
     }
   }
