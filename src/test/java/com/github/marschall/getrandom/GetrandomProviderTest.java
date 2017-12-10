@@ -27,10 +27,10 @@ class GetrandomProviderTest {
     SecureRandom secureRandom;
 
     secureRandom = SecureRandom.getInstance("getrandom");
-    assertNotNull(secureRandom);
+    verify(secureRandom);
 
     secureRandom = SecureRandom.getInstance(GetrandomProvider.GETRANDOM, GetrandomProvider.NAME);
-    assertNotNull(secureRandom);
+    verify(secureRandom);
   }
 
   @Test
@@ -38,10 +38,48 @@ class GetrandomProviderTest {
     SecureRandom secureRandom;
 
     secureRandom = SecureRandom.getInstance("geturandom");
-    assertNotNull(secureRandom);
+    verify(secureRandom);
 
     secureRandom = SecureRandom.getInstance(GetrandomProvider.GETRANDOM, GetrandomProvider.NAME);
-    assertNotNull(secureRandom);
+    verify(secureRandom);
   }
+
+  private static void verify(SecureRandom secureRandom) {
+    assertNotNull(secureRandom);
+
+    byte[] buffer = new byte[128];
+//    assertThat(buffer, allZeros());
+
+    secureRandom.nextBytes(buffer);
+//    assertThat(buffer, not(allZeros()));
+  }
+
+//  static final class AllZeros extends TypeSafeMatcher<byte[]> {
+//
+//    private AllZeros() {
+//      super();
+//    }
+//
+//    static Matcher<byte[]> allZeros() {
+//      return new AllZeros();
+//    }
+//
+//    @Override
+//    public void describeTo(Description description) {
+//      description.appendText("is all 0x00");
+//
+//    }
+//
+//    @Override
+//    protected boolean matchesSafely(byte[] item) {
+//      for (byte b : item) {
+//        if (b != 0) {
+//          return false;
+//        }
+//      }
+//      return true;
+//    }
+//
+//  }
 
 }

@@ -5,7 +5,7 @@
 #include <stdlib.h>           /* for malloc and free */
 #include <errno.h>            /* errno */
 
-#include "com_github_marschall_getrandom_GetRandom.h"
+#include "com_github_marschall_getrandom_Retrandom.h"
 
 /*
  * The maximum size of the stack-allocated buffer.
@@ -13,6 +13,10 @@
 #define BUFFER_SIZE 8192
 
 #define GRND_RANDOM 0x02
+
+ _Static_assert (com_github_marschall_getrandom_Retrandom_EFAULT == EFAULT, "com_github_marschall_getrandom_Retrandom_EFAULT == EFAULT");
+ _Static_assert (com_github_marschall_getrandom_Retrandom_EINTR == EINTR, "com_github_marschall_getrandom_Retrandom_EINTR == EINTR");
+ _Static_assert (com_github_marschall_getrandom_Retrandom_EINVAL == EINVAL, "com_github_marschall_getrandom_Retrandom_EINVAL == EINVAL");
 
 static inline ssize_t getrandom(void *buf, size_t buflen, unsigned int flags)
 {
