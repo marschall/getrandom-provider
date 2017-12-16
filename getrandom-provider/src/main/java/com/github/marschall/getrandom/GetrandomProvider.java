@@ -31,7 +31,10 @@ public final class GetrandomProvider extends Provider {
   public GetrandomProvider() {
     super(NAME, 0.1d, "getrandom (SecureRandom)");
     this.put("SecureRandom." + GETRANDOM, GetrandomSecureRandom.class.getName());
+    this.put("SecureRandom." + GETRANDOM + " ThreadSafe", "true");
     this.put("SecureRandom." + GETURANDOM, GeturandomSecureRandom.class.getName());
+    this.put("SecureRandom." + GETURANDOM, GeturandomSecureRandom.class.getName());
+    this.put("SecureRandom." + GETURANDOM + " ThreadSafe", "true");
   }
 
 }
