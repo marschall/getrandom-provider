@@ -1,6 +1,6 @@
 package com.github.marschall.getrandom;
 
-import static com.github.marschall.getrandom.GetrandomProviderTest.AllZeros.allZeros;
+import static com.github.marschall.getrandom.AllZeros.allZeros;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -9,9 +9,6 @@ import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.security.Security;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -59,34 +56,6 @@ class GetrandomProviderTest {
 
     secureRandom.nextBytes(buffer);
     assertThat(buffer, not(allZeros()));
-  }
-
-  static final class AllZeros extends TypeSafeMatcher<byte[]> {
-
-    private AllZeros() {
-      super();
-    }
-
-    static Matcher<byte[]> allZeros() {
-      return new AllZeros();
-    }
-
-    @Override
-    public void describeTo(Description description) {
-      description.appendText("is all 0x00");
-
-    }
-
-    @Override
-    protected boolean matchesSafely(byte[] item) {
-      for (byte b : item) {
-        if (b != 0) {
-          return false;
-        }
-      }
-      return true;
-    }
-
   }
 
 }
