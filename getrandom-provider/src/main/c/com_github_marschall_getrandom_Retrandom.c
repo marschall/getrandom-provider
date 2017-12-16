@@ -10,7 +10,7 @@
 /*
  * The maximum size of the stack-allocated buffer.
  */
-#define BUFFER_SIZE 8192
+#define BUFFER_SIZE 2048
 
 #define GRND_RANDOM 0x02
 
