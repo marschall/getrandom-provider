@@ -16,6 +16,7 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>getrandom-provider</artifactId>
       <version>${project.version}</version>
+      <classifier>jni</classifier>
       <type>jar</type>
     </dependency>
 

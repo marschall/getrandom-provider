@@ -8,7 +8,7 @@
   </parent>
   <artifactId>getrandom-provider</artifactId>
   <packaging>nar</packaging>
-  
+
   <name>getrandom() Provider</name>
   <description>A secure random provider that uses Linux kernel functions.</description>
 
@@ -48,6 +48,12 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>com.github.maven-nar</groupId>
@@ -63,6 +69,23 @@
               <linkCPP>false</linkCPP>
             </library>
           </libraries>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptors>
+            <descriptor>src/assembly/jni.xml</descriptor>
+          </descriptors>
         </configuration>
       </plugin>
       <plugin>
