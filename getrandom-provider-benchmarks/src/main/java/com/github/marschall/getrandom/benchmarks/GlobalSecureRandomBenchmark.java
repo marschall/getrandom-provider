@@ -28,7 +28,7 @@ public class GlobalSecureRandomBenchmark {
   public void setup() throws NoSuchAlgorithmException {
     // in theory the ServiceLoader should find this but doesn't
     Security.addProvider(new GetrandomProvider());
-    this.getrandom = SecureRandom.getInstance(GetrandomProvider.GETRANDOM);
+    this.getrandom = SecureRandom.getInstance(GetrandomProvider.GETURANDOM);
     this.getrandom.nextBoolean(); // seed
     this.nativePRNGNonBlocking = SecureRandom.getInstance("NativePRNGNonBlocking");
     this.nativePRNGNonBlocking.nextBoolean(); // seed
