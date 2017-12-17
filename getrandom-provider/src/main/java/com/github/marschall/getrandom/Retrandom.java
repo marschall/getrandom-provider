@@ -70,8 +70,10 @@ final class Retrandom {
       byte[] buffer = new byte[8192];
       int read = 0;
       do {
+        if (read > 0) {
+          output.write(buffer, 0, read);
+        }
         read = input.read(buffer);
-        output.write(buffer, 0, read);
       } while (read != -1);
     } catch (IOException e) {
       throw new AssertionError("could copy to temp file: " + fileName, e);
