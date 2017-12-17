@@ -1,30 +1,82 @@
 package com.github.marschall.getrandom;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 
 final class Retrandom {
 
-  static final boolean INITIALIZED;
-
   static {
-    // -Djava.library.path=...
-    String javaLibraryPath = System.getProperty("java.library.path");
-    boolean initialized = false;
+    String version = getVersion();
+    String libraryName = "getrandom-provider-" + version;
     try {
-      Runtime.getRuntime().loadLibrary("getrandom-provider-0.1.0-SNAPSHOT");
-      initialized = true;
-      INITIALIZED = initialized;
-    } catch (RuntimeException | Error e) {
-      throw e;
+      Runtime.getRuntime().loadLibrary(libraryName);
+    } catch (UnsatisfiedLinkError e) {
+      // the library is not in the library path
+      // extract it from the JAR and load it from there
+      String fileName = System.mapLibraryName(libraryName);
+      Path extracted = extractLibrary(fileName);
+      try {
+        System.load(extracted.toAbsolutePath().toString());
+      } finally {
+        // under Linux can be deleted after loading
+        try {
+          Files.delete(extracted);
+        } catch (IOException e1) {
+          throw new AssertionError("could not delete temp file: " + fileName, e);
+        }
+      }
     }
-//    String libraryName = System.mapLibraryName("libgetrandom-provider-0.1.0-SNAPSHOT.so");
-//    System.load("/home/marschall/git/getrandom-provider/target/nar/getrandom-provider-0.1.0-SNAPSHOT-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni" + libraryName);
   }
 
-  static void assertInitialized() {
-    if (!INITIALIZED) {
-      throw new IllegalStateException("not initialized");
+  private static String getVersion() {
+    String fileName = "getrandom-provider.version";
+    try (InputStream stream = Retrandom.class.getClassLoader().getResourceAsStream(fileName)) {
+      if (stream == null) {
+        throw new AssertionError("could not load resource: " + fileName);
+      }
+      ByteArrayOutputStream bos = new ByteArrayOutputStream(16);
+      byte[] buffer = new byte[16];
+      int read = 0;
+      do {
+        if (read > 0) {
+          bos.write(buffer, 0, read);
+        }
+        read = stream.read(buffer);
+      } while (read != -1);
+      return new String(bos.toByteArray(), StandardCharsets.US_ASCII);
+    } catch (IOException e) {
+      throw new AssertionError("could not load file: " + fileName, e);
     }
+  }
+
+  private static Path extractLibrary(String fileName) {
+    Path tempFile;
+    try {
+      tempFile = Files.createTempFile("getrandom-provider", "so");
+    } catch (IOException e) {
+      throw new AssertionError("could not create temp file", e);
+    }
+    try (OutputStream output = Files.newOutputStream(tempFile);
+         InputStream input = Retrandom.class.getClassLoader().getResourceAsStream(fileName)) {
+      if (input == null) {
+        throw new AssertionError("could not load resource: " + fileName);
+      }
+      byte[] buffer = new byte[8192];
+      int read = 0;
+      do {
+        read = input.read(buffer);
+        output.write(buffer, 0, read);
+      } while (read != -1);
+    } catch (IOException e) {
+      throw new AssertionError("could copy to temp file: " + fileName, e);
+    }
+    return tempFile;
   }
 
   private static final int EFAULT = 14;
