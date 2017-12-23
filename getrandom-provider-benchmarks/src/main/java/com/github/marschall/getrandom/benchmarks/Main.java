@@ -1,6 +1,6 @@
 package com.github.marschall.getrandom.benchmarks;
 
-import static org.openjdk.jmh.results.format.ResultFormatType.JSON;
+import static org.openjdk.jmh.results.format.ResultFormatType.TEXT;
 
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -21,7 +21,7 @@ public class Main {
             .warmupIterations(10)
             .measurementIterations(10)
             .forks(10)
-            .resultFormat(JSON)
+            .resultFormat(TEXT)
             .threads(Integer.parseInt(args[0]))
             .output(args[1])
             .build();

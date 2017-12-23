@@ -9,6 +9,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -18,50 +19,34 @@ import com.github.marschall.getrandom.GetrandomProvider;
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @State(Scope.Benchmark)
-public class GlobalSecureRandomBenchmark {
+public class SecureRandomBenchmark {
 
-  private SecureRandom getrandom;
+  @Param({GetrandomProvider.GETURANDOM, "NativePRNGNonBlocking"})
+  public String algorithm;
 
-  private SecureRandom nativePRNGNonBlocking;
+  private SecureRandom secureRandom;
 
   @Setup
   public void setup() throws NoSuchAlgorithmException {
     // in theory the ServiceLoader should find this but doesn't
     Security.addProvider(new GetrandomProvider());
-    this.getrandom = SecureRandom.getInstance(GetrandomProvider.GETURANDOM);
-    this.getrandom.nextBoolean(); // seed
-    this.nativePRNGNonBlocking = SecureRandom.getInstance("NativePRNGNonBlocking");
-    this.nativePRNGNonBlocking.nextBoolean(); // seed
+    this.secureRandom = SecureRandom.getInstance(this.algorithm);
+    this.secureRandom.nextBoolean(); // seed
   }
 
   @Benchmark
-  public int getrandom_1byte() {
-    return this.getrandom.nextInt();
+  public boolean nextBoolean() {
+    return this.secureRandom.nextBoolean();
   }
 
   @Benchmark
-  public int getrandom_4byte() {
-    return this.getrandom.nextInt();
+  public int nextInt() {
+    return this.secureRandom.nextInt();
   }
 
   @Benchmark
-  public long getrandom_8byte() {
-    return this.getrandom.nextLong();
-  }
-
-  @Benchmark
-  public int nativeprng_1byte() {
-    return this.nativePRNGNonBlocking.nextInt();
-  }
-
-  @Benchmark
-  public int nativeprng_4byte() {
-    return this.nativePRNGNonBlocking.nextInt();
-  }
-
-  @Benchmark
-  public long nativeprng_8byte() {
-    return this.nativePRNGNonBlocking.nextLong();
+  public long nextLong() {
+    return this.secureRandom.nextLong();
   }
 
 }
