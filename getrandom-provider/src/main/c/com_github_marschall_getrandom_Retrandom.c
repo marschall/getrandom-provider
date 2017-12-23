@@ -9,8 +9,9 @@
 
 /*
  * The maximum size of the stack-allocated buffer.
+ * Enough for a 2048 bit key
  */
-#define BUFFER_SIZE 2048
+#define BUFFER_SIZE 256
 
 #define GRND_RANDOM 0x02
 
