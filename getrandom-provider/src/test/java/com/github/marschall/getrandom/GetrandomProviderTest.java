@@ -17,7 +17,6 @@ class GetrandomProviderTest {
 
   @BeforeAll
   static void addProvider() {
-    // in theory the ServiceLoader should find this but doesn't
     Security.addProvider(new GetrandomProvider());
   }
 

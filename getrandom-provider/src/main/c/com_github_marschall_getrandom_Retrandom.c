@@ -9,9 +9,8 @@
 
 /*
  * The maximum size of the stack-allocated buffer.
- * Enough for a 2048 bit key
  */
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 2048
 
 #define GRND_RANDOM 0x02
 
@@ -33,17 +32,17 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
   char stackBuffer[BUFFER_SIZE];
   char *buffer = 0;
   unsigned int flags = 0;
-  size_t bufferLength = sizeof(char) * (size_t) arrayLength;
+  size_t bufferLength = sizeof((char) * (size_t) arrayLength);
   ssize_t written = 0;
   int getRandomErrorCode = 0;
   
-  // set up buffer
+  /* set up buffer */
   if (arrayLength > BUFFER_SIZE)
   {
 
     buffer = malloc(bufferLength);
     if (buffer == NULL) {
-      return 0;
+      return com_github_marschall_getrandom_Retrandom_EMALLOCNULL;
     }
   }
   else
@@ -77,7 +76,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
     }
   }
   
-  // clean up buffer if necessary
+  /* clean up buffer if necessary */
   if (arrayLength > BUFFER_SIZE)
   {
     free(buffer);

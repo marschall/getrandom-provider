@@ -81,6 +81,7 @@ final class Retrandom {
     return tempFile;
   }
 
+  private static final int EMALLOCNULL = 1;
   private static final int EFAULT = 14;
   private static final int EINTR = 4;
   private static final int EINVAL = 22;
@@ -94,6 +95,8 @@ final class Retrandom {
     int exitCode = getrandom0(bytes, random);
     if (exitCode != 0) {
       switch (exitCode) {
+        case EMALLOCNULL:
+          throw new OutOfMemoryError("C heap exhaused malloc() returned NULL");
         case EFAULT:
           throw new IllegalStateException("The address referred to by buf is outside the accessible address space.");
         case EINTR:
