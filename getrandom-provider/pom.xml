@@ -83,6 +83,12 @@
           </execution>
         </executions>
         <configuration>
+          <archive>
+            <manifestEntries>
+              <Name>com/github/marschall/getrandom/</Name>
+              <Sealed>true</Sealed>
+            </manifestEntries>
+          </archive>
           <descriptors>
             <descriptor>src/assembly/jni.xml</descriptor>
           </descriptors>
