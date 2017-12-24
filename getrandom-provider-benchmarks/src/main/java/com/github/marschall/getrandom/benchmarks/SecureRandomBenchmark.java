@@ -17,7 +17,7 @@ import org.openjdk.jmh.annotations.State;
 import com.github.marschall.getrandom.GetrandomProvider;
 
 @BenchmarkMode(Mode.Throughput)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
 public class SecureRandomBenchmark {
 
@@ -26,11 +26,14 @@ public class SecureRandomBenchmark {
 
   private SecureRandom secureRandom;
 
+  private byte[] bytes;
+
   @Setup
   public void setup() throws NoSuchAlgorithmException {
     Security.addProvider(new GetrandomProvider());
     this.secureRandom = SecureRandom.getInstance(this.algorithm);
     this.secureRandom.nextBoolean(); // seed
+    this.bytes = new byte[256];
   }
 
   @Benchmark
@@ -46,6 +49,12 @@ public class SecureRandomBenchmark {
   @Benchmark
   public long nextLong() {
     return this.secureRandom.nextLong();
+  }
+
+  @Benchmark
+  public byte[] nextBytes256() {
+    this.secureRandom.nextBytes(this.bytes);
+    return this.bytes;
   }
 
 }
