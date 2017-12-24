@@ -20,7 +20,7 @@ A nonblocking (/dev/urandom) instance of the provider can be acquired using
 SecureRandom.getInstance(GetrandomProvider.GETURANDOM); // "geturandom"
 ```
 
-Alternatively a blocking (/dev/urandom) instance of the provider can be acquired using
+Alternatively a blocking (/dev/random) instance of the provider can be acquired using
 
 ```java
 SecureRandom.getInstance(GetrandomProvider.GETRANDOM); // "getrandom"
@@ -35,7 +35,7 @@ The provider can be configured in two different ways
 1. Programmatic configuration
 1. Static configuration
 
-For best startup performance it is recommended to extract the .so from the JAR and add it to a folder present in `LD_LIBRARY_PATH` environment variable or the `java.library.path` system property. Otherwise this library will extract the .so to a temporary folder the first time it is called.
+For best startup performance it is recommended to extract the .so from the JAR and add it to a folder present in the `LD_LIBRARY_PATH` environment variable or the `java.library.path` system property. Otherwise this library will extract the .so to a temporary folder the first time it is called.
 
 ### Programmatic configuration
 
@@ -59,8 +59,12 @@ security.provider.14=getrandom
 
 This can be done [per JVM installation](https://docs.oracle.com/javase/9/security/howtoimplaprovider.htm#GUID-831AA25F-F702-442D-A2E4-8DA6DEA16F33) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
 
-The provider uses the ServiceLoader mechanism therefore the `getrandom` is enough, there is no need to use the fully qualified class name.
+The provider uses the ServiceLoader mechanism therefore using the `getrandom` string is enough, there is no need to use the fully qualified class name.
 
-Note that for this to work the provider needs to be in the class path or module path.
+Note that for this to work the provider JAR needs to be in the class path or module path.
 
+### Misc
+
+* marked as ThreadSafe in Java 9
+* supports the ServiceLoader mechanism
 
