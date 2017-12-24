@@ -3,7 +3,12 @@ package com.github.marschall.getrandom;
 import java.security.SecureRandomSpi;
 import java.util.Objects;
 
+/**
+ * Abstract base class for {@link SecureRandomSpi}s that use the {@code getrandom} system call.
+ */
 abstract class AbstractGetrandomSecureRandomSpi extends SecureRandomSpi {
+
+  private static final long serialVersionUID = 1L;
 
   @Override
   protected void engineSetSeed(byte[] seed) {
