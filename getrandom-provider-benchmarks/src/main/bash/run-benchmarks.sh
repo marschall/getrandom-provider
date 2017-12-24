@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 run_benchark() {
    $JAVA_HOME/bin/java \
      -XX:+UseParallelGC \
@@ -8,7 +10,12 @@ run_benchark() {
        $1 threads-$1.txt
 }
 
-# run_benchark 1
-# run_benchark 2
-# run_benchark 4
-run_benchark 8
+main() {
+  run_benchark 1
+  run_benchark 2
+  run_benchark 4
+  run_benchark 8
+}
+
+main
+

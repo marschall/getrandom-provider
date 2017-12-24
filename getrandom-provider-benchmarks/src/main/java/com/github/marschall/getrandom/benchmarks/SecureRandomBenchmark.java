@@ -28,7 +28,6 @@ public class SecureRandomBenchmark {
 
   @Setup
   public void setup() throws NoSuchAlgorithmException {
-    // in theory the ServiceLoader should find this but doesn't
     Security.addProvider(new GetrandomProvider());
     this.secureRandom = SecureRandom.getInstance(this.algorithm);
     this.secureRandom.nextBoolean(); // seed
