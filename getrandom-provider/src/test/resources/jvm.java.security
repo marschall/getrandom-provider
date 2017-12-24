@@ -1,3 +1,4 @@
+# vim `find $JAVA_HOME -name java.security -type f`
 # security.provider.1=SUN
 # security.provider.2=SunRsaSign
 # security.provider.3=SunEC
