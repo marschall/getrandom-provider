@@ -58,7 +58,7 @@ final class Retrandom {
   private static Path extractLibrary(String fileName) {
     Path tempFile;
     try {
-      tempFile = Files.createTempFile("getrandom-provider", "so");
+      tempFile = Files.createTempFile("getrandom-provider-", ".so");
     } catch (IOException e) {
       throw new AssertionError("could not create temp file", e);
     }
