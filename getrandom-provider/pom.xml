@@ -63,6 +63,11 @@
           <java>
             <include>true</include>
           </java>
+          <javah>
+            <excludes>
+              <exclude>module-info.class</exclude>
+            </excludes>
+          </javah>
           <libraries>
             <library>
               <type>jni</type>
