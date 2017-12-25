@@ -32,7 +32,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
   char stackBuffer[BUFFER_SIZE];
   char *buffer = 0;
   unsigned int flags = 0;
-  size_t bufferLength = sizeof((char) * (size_t) arrayLength);
+  size_t bufferLength = sizeof(char) * (size_t) arrayLength;
   ssize_t written = 0;
   int getRandomErrorCode = 0;
   
