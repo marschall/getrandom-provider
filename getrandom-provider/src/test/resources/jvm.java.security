@@ -10,9 +10,8 @@
 # security.provider.9=SunPCSC
 # security.provider.10=JdkLDAP
 # security.provider.11=JdkSASL
-# security.provider.12=Apple
-# security.provider.13=SunPKCS11
+# security.provider.12=SunPKCS11
 
 
 # add the provider at the end
-security.provider.14=getrandom
+security.provider.13=getrandom
