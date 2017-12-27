@@ -2,7 +2,6 @@ package com.github.marschall.getrandom.benchmarks;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -34,7 +33,6 @@ public class SecureRandomBenchmark {
 
   @Setup
   public void setup() throws NoSuchAlgorithmException {
-    Security.addProvider(new GetrandomProvider());
     this.secureRandom = SecureRandom.getInstance(this.algorithm);
     this.secureRandom.nextBoolean(); // seed
     this.bytes16 = new byte[16];
