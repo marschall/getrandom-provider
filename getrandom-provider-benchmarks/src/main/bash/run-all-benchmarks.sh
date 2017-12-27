@@ -6,7 +6,9 @@ VERSION=0.1.0-SNAPSHOT
 export VERSION
 
 extract_so() {
-  unzip -p target/getrandom-provider-benchmarks-${VERSION}.jar libgetrandom-provider-${VERSION}.so > file.txt
+  if [ ! -f libgetrandom-provider-${VERSION}.so ]; then
+    unzip -p target/getrandom-provider-benchmarks-${VERSION}.jar libgetrandom-provider-${VERSION}.so > target/libgetrandom-provider-${VERSION}.so
+  fi
 }
 
 reaname_output() {
