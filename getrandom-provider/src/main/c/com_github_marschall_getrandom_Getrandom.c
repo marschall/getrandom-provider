@@ -5,7 +5,7 @@
 #include <stdlib.h>           /* for malloc and free */
 #include <errno.h>            /* errno */
 
-#include "com_github_marschall_getrandom_Retrandom.h"
+#include "com_github_marschall_getrandom_Getrandom.h"
 
 /*
  * The maximum size of the stack-allocated buffer.
@@ -14,16 +14,16 @@
 
 #define GRND_RANDOM 0x02
 
- _Static_assert (com_github_marschall_getrandom_Retrandom_EFAULT == EFAULT, "com_github_marschall_getrandom_Retrandom_EFAULT == EFAULT");
- _Static_assert (com_github_marschall_getrandom_Retrandom_EINTR == EINTR, "com_github_marschall_getrandom_Retrandom_EINTR == EINTR");
- _Static_assert (com_github_marschall_getrandom_Retrandom_EINVAL == EINVAL, "com_github_marschall_getrandom_Retrandom_EINVAL == EINVAL");
+ _Static_assert (com_github_marschall_getrandom_Getrandom_EFAULT == EFAULT, "com_github_marschall_getrandom_Getrandom_EFAULT == EFAULT");
+ _Static_assert (com_github_marschall_getrandom_Getrandom_EINTR == EINTR, "com_github_marschall_getrandom_Getrandom_EINTR == EINTR");
+ _Static_assert (com_github_marschall_getrandom_Getrandom_EINVAL == EINVAL, "com_github_marschall_getrandom_Getrandom_EINVAL == EINVAL");
 
 static inline ssize_t getrandom(void *buf, size_t buflen, unsigned int flags)
 {
   return syscall(__NR_getrandom, buf, buflen, flags);
 }
 
-JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
+JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Getrandom_getrandom0
   (JNIEnv *env, jclass clazz, jbyteArray bytes, jboolean random)
 {
   _Static_assert (sizeof(jbyte) == sizeof(char), "sizeof(jbyte) == sizeof(char)");
@@ -42,7 +42,7 @@ JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Retrandom_getrandom0
 
     buffer = malloc(bufferLength);
     if (buffer == NULL) {
-      return com_github_marschall_getrandom_Retrandom_EMALLOCNULL;
+      return com_github_marschall_getrandom_Getrandom_EMALLOCNULL;
     }
   }
   else

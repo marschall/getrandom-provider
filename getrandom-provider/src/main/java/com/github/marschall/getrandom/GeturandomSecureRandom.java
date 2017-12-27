@@ -21,7 +21,7 @@ public class GeturandomSecureRandom extends AbstractGetrandomSecureRandomSpi {
   @Override
   protected void engineNextBytes(byte[] bytes) {
     Objects.requireNonNull(bytes);
-    Retrandom.getrandom(bytes, false);
+    Getrandom.getrandom(bytes, false);
   }
 
 }

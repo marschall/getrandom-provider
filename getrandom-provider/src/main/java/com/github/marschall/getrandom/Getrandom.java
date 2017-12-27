@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 
-final class Retrandom {
+final class Getrandom {
 
   static {
     String version = getVersion();
@@ -36,7 +36,7 @@ final class Retrandom {
 
   private static String getVersion() {
     String fileName = "getrandom-provider.version";
-    try (InputStream stream = Retrandom.class.getClassLoader().getResourceAsStream(fileName)) {
+    try (InputStream stream = Getrandom.class.getClassLoader().getResourceAsStream(fileName)) {
       if (stream == null) {
         throw new AssertionError("could not load resource: " + fileName);
       }
@@ -63,7 +63,7 @@ final class Retrandom {
       throw new AssertionError("could not create temp file", e);
     }
     try (OutputStream output = Files.newOutputStream(tempFile);
-         InputStream input = Retrandom.class.getClassLoader().getResourceAsStream(fileName)) {
+         InputStream input = Getrandom.class.getClassLoader().getResourceAsStream(fileName)) {
       if (input == null) {
         throw new AssertionError("could not load resource: " + fileName);
       }
@@ -86,7 +86,7 @@ final class Retrandom {
   private static final int EINTR = 4;
   private static final int EINVAL = 22;
 
-  private Retrandom() {
+  private Getrandom() {
     throw new AssertionError("not instantiable");
   }
 
