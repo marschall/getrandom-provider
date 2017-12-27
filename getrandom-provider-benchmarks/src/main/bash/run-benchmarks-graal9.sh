@@ -8,7 +8,7 @@ run_benchark() {
      -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler \
      -Djava.security.properties=src/main/resources/jvm.java9.security \
      -Xmx32g -Xms32g \
-     -jar target/getrandom-provider-benchmarks-0.1.0-SNAPSHOT.jar \
+     -jar target/getrandom-provider-benchmarks-${VERSION}.jar \
        $1 threads-$1.txt
 }
 

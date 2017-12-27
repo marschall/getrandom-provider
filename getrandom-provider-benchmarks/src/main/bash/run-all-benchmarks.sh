@@ -2,6 +2,13 @@
 
 set -e
 
+VERSION=0.1.0-SNAPSHOT
+export VERSION
+
+extract_so() {
+  unzip -p target/getrandom-provider-benchmarks-${VERSION}.jar libgetrandom-provider-${VERSION}.so > file.txt
+}
+
 reaname_output() {
   mv threads-1.txt threads-1-$1.txt
   mv threads-2.txt threads-2-$1.txt
