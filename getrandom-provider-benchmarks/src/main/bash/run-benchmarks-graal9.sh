@@ -6,8 +6,8 @@ run_benchark() {
    $JAVA_HOME/bin/java \
      -XX:+UseParallelGC \
      -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler \
-     -Djava.security.properties=src/main/resources/jvm.java.security \
-     -Xmx1g -Xms1g \
+     -Djava.security.properties=src/main/resources/jvm.java9.security \
+     -Xmx32g -Xms32g \
      -jar target/getrandom-provider-benchmarks-0.1.0-SNAPSHOT.jar \
        $1 threads-$1.txt
 }

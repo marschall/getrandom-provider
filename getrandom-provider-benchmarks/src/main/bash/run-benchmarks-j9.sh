@@ -5,7 +5,8 @@ set -e
 run_benchark() {
    $JAVA_HOME/bin/java \
      -Xgcpolicy:optthruput \
-     -Xmx1g -Xms1g \
+     -Djava.security.properties=src/main/resources/jvm.java9.security \
+     -Xmx32g -Xms32g \
      -jar target/getrandom-provider-benchmarks-0.1.0-SNAPSHOT.jar \
        $1 threads-$1.txt
 }
