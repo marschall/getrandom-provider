@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -7,10 +8,10 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>getrandom-provider-benchmarks</artifactId>
-  
+
   <name>Random Provider Benchmarks</name>
   <description>Benchmarks for different SecureRandomSpi.</description>
-  
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -25,7 +26,7 @@
       <artifactId>jmh-core</artifactId>
       <version>${jmh.version}</version>
     </dependency>
-    
+
     <dependency>
       <!-- somehow annotationProcessorPaths isn't picked up by compiler plugin -->
       <groupId>org.openjdk.jmh</groupId>
@@ -34,7 +35,7 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
@@ -68,6 +69,6 @@
         </executions>
       </plugin>
     </plugins>
-</build>
+  </build>
 
 </project>
