@@ -92,7 +92,7 @@ final class Getrandom {
 
   static void getrandom(byte[] bytes, boolean random) {
     Objects.requireNonNull(bytes);
-    int exitCode = getrandom0(bytes, random);
+    int exitCode = getrandom0(bytes, bytes.length, random);
     if (exitCode != 0) {
       switch (exitCode) {
         case EMALLOCNULL:
@@ -111,6 +111,6 @@ final class Getrandom {
 
 
   // http://man7.org/linux/man-pages/man2/getrandom.2.html
-  private static native int getrandom0(byte[] bytes, boolean random);
+  private static native int getrandom0(byte[] bytes, int length, boolean random);
 
 }
