@@ -7,7 +7,6 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>getrandom-provider</artifactId>
-  <packaging>nar</packaging>
 
   <name>getrandom() Provider</name>
   <description>A secure random provider that uses Linux kernel functions.</description>
@@ -58,7 +57,6 @@
       <plugin>
         <groupId>com.github.maven-nar</groupId>
         <artifactId>nar-maven-plugin</artifactId>
-        <extensions>true</extensions>
         <configuration>
           <java>
             <include>true</include>
@@ -75,6 +73,23 @@
             </library>
           </libraries>
         </configuration>
+        <executions>
+          <execution>
+            <id>nar-validate</id>
+            <goals>
+              <goal>nar-validate</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+          <execution>
+            <id>nar-compile</id>
+            <goals>
+              <goal>nar-javah</goal>
+              <goal>nar-compile</goal>
+            </goals>
+            <phase>compile</phase>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -88,6 +103,7 @@
           </execution>
         </executions>
         <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
           <archive>
             <manifestEntries>
               <Name>com/github/marschall/getrandom/</Name>
