@@ -9,6 +9,7 @@ A `SecureRandomSPI` that makes [getrandom()](http://man7.org/linux/man-pages/man
 * unlike the `NativePRNG` variants does not have a global lock, but see comments on the kernel lock above
 * unlike the `NativePRNG` variants does not additionally mix with SHA-1
 * unlike the `NativePRNG` variants blocks until the urandom source has been initialized
+* unlike the `NativePRNG` variants zeros out native memory
 * supports the ServiceLoader mechanism
 * is a Java 9 module but works on Java 8
 * no dependencies outside the `java.base` module
