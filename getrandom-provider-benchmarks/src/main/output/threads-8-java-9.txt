@@ -1,20 +1,949 @@
 # JMH version: 1.19
 # VM version: JDK 9.0.1, VM 9.0.1+11
 # VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
-# VM options: -XX:+UseParallelGC -Xmx1g -Xms1g
-# Warmup: 10 iterations, 1 s each
-# Measurement: 10 iterations, 1 s each
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 8 threads, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBoolean
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 0.00% complete, ETA 00:08:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 1599.198 ops/ms
+# Warmup Iteration   2: 1596.084 ops/ms
+# Warmup Iteration   3: 1599.586 ops/ms
+# Warmup Iteration   4: 1599.590 ops/ms
+# Warmup Iteration   5: 1601.717 ops/ms
+Iteration   1: 1597.441 ops/ms
+Iteration   2: 1600.044 ops/ms
+Iteration   3: 1596.575 ops/ms
+Iteration   4: 1595.128 ops/ms
+Iteration   5: 1599.606 ops/ms
+
+# Run progress: 2.08% complete, ETA 00:08:11
+# Fork: 2 of 3
+# Warmup Iteration   1: 1600.315 ops/ms
+# Warmup Iteration   2: 1597.227 ops/ms
+# Warmup Iteration   3: 1600.816 ops/ms
+# Warmup Iteration   4: 1595.494 ops/ms
+# Warmup Iteration   5: 1603.388 ops/ms
+Iteration   1: 1597.657 ops/ms
+Iteration   2: 1597.131 ops/ms
+Iteration   3: 1597.111 ops/ms
+Iteration   4: 1600.422 ops/ms
+Iteration   5: 1600.213 ops/ms
+
+# Run progress: 4.17% complete, ETA 00:08:00
+# Fork: 3 of 3
+# Warmup Iteration   1: 1602.691 ops/ms
+# Warmup Iteration   2: 1601.022 ops/ms
+# Warmup Iteration   3: 1600.999 ops/ms
+# Warmup Iteration   4: 1598.123 ops/ms
+# Warmup Iteration   5: 1601.552 ops/ms
+Iteration   1: 1601.420 ops/ms
+Iteration   2: 1600.049 ops/ms
+Iteration   3: 1600.405 ops/ms
+Iteration   4: 1600.025 ops/ms
+Iteration   5: 1601.264 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBoolean":
+  1598.966 ±(99.9%) 2.064 ops/ms [Average]
+  (min, avg, max) = (1595.128, 1598.966, 1601.420), stdev = 1.931
+  CI (99.9%): [1596.902, 1601.030] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBoolean
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 6.25% complete, ETA 00:07:49
+# Fork: 1 of 3
+# Warmup Iteration   1: 3460.432 ops/ms
+# Warmup Iteration   2: 3416.517 ops/ms
+# Warmup Iteration   3: 3396.626 ops/ms
+# Warmup Iteration   4: 3425.301 ops/ms
+# Warmup Iteration   5: 3456.997 ops/ms
+Iteration   1: 3478.117 ops/ms
+Iteration   2: 3483.371 ops/ms
+Iteration   3: 3459.731 ops/ms
+Iteration   4: 3472.121 ops/ms
+Iteration   5: 3494.555 ops/ms
+
+# Run progress: 8.33% complete, ETA 00:07:39
+# Fork: 2 of 3
+# Warmup Iteration   1: 3538.199 ops/ms
+# Warmup Iteration   2: 3531.435 ops/ms
+# Warmup Iteration   3: 3582.360 ops/ms
+# Warmup Iteration   4: 3548.497 ops/ms
+# Warmup Iteration   5: 3511.542 ops/ms
+Iteration   1: 3546.328 ops/ms
+Iteration   2: 3559.742 ops/ms
+Iteration   3: 3566.791 ops/ms
+Iteration   4: 3548.807 ops/ms
+Iteration   5: 3506.633 ops/ms
+
+# Run progress: 10.42% complete, ETA 00:07:28
+# Fork: 3 of 3
+# Warmup Iteration   1: 3530.327 ops/ms
+# Warmup Iteration   2: 3572.587 ops/ms
+# Warmup Iteration   3: 3601.295 ops/ms
+# Warmup Iteration   4: 3597.394 ops/ms
+# Warmup Iteration   5: 3627.769 ops/ms
+Iteration   1: 3655.342 ops/ms
+Iteration   2: 3618.435 ops/ms
+Iteration   3: 3653.082 ops/ms
+Iteration   4: 3616.753 ops/ms
+Iteration   5: 3619.959 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBoolean":
+  3551.984 ±(99.9%) 72.768 ops/ms [Average]
+  (min, avg, max) = (3459.731, 3551.984, 3655.342), stdev = 68.067
+  CI (99.9%): [3479.216, 3624.752] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes128
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 12.50% complete, ETA 00:07:17
+# Fork: 1 of 3
+# Warmup Iteration   1: 655.872 ops/ms
+# Warmup Iteration   2: 656.900 ops/ms
+# Warmup Iteration   3: 655.367 ops/ms
+# Warmup Iteration   4: 655.895 ops/ms
+# Warmup Iteration   5: 657.923 ops/ms
+Iteration   1: 656.111 ops/ms
+Iteration   2: 657.789 ops/ms
+Iteration   3: 655.861 ops/ms
+Iteration   4: 653.960 ops/ms
+Iteration   5: 656.794 ops/ms
+
+# Run progress: 14.58% complete, ETA 00:07:07
+# Fork: 2 of 3
+# Warmup Iteration   1: 658.736 ops/ms
+# Warmup Iteration   2: 658.796 ops/ms
+# Warmup Iteration   3: 655.028 ops/ms
+# Warmup Iteration   4: 658.029 ops/ms
+# Warmup Iteration   5: 658.975 ops/ms
+Iteration   1: 657.134 ops/ms
+Iteration   2: 655.799 ops/ms
+Iteration   3: 655.460 ops/ms
+Iteration   4: 658.428 ops/ms
+Iteration   5: 656.623 ops/ms
+
+# Run progress: 16.67% complete, ETA 00:06:56
+# Fork: 3 of 3
+# Warmup Iteration   1: 659.301 ops/ms
+# Warmup Iteration   2: 657.282 ops/ms
+# Warmup Iteration   3: 656.696 ops/ms
+# Warmup Iteration   4: 655.522 ops/ms
+# Warmup Iteration   5: 654.273 ops/ms
+Iteration   1: 657.856 ops/ms
+Iteration   2: 654.769 ops/ms
+Iteration   3: 654.619 ops/ms
+Iteration   4: 656.933 ops/ms
+Iteration   5: 657.234 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes128":
+  656.358 ±(99.9%) 1.378 ops/ms [Average]
+  (min, avg, max) = (653.960, 656.358, 658.428), stdev = 1.289
+  CI (99.9%): [654.980, 657.736] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes128
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 18.75% complete, ETA 00:06:46
+# Fork: 1 of 3
+# Warmup Iteration   1: 263.776 ops/ms
+# Warmup Iteration   2: 270.631 ops/ms
+# Warmup Iteration   3: 268.215 ops/ms
+# Warmup Iteration   4: 270.095 ops/ms
+# Warmup Iteration   5: 270.325 ops/ms
+Iteration   1: 268.062 ops/ms
+Iteration   2: 269.393 ops/ms
+Iteration   3: 268.885 ops/ms
+Iteration   4: 270.805 ops/ms
+Iteration   5: 268.399 ops/ms
+
+# Run progress: 20.83% complete, ETA 00:06:35
+# Fork: 2 of 3
+# Warmup Iteration   1: 261.458 ops/ms
+# Warmup Iteration   2: 269.710 ops/ms
+# Warmup Iteration   3: 271.891 ops/ms
+# Warmup Iteration   4: 267.887 ops/ms
+# Warmup Iteration   5: 269.196 ops/ms
+Iteration   1: 267.311 ops/ms
+Iteration   2: 268.277 ops/ms
+Iteration   3: 267.121 ops/ms
+Iteration   4: 268.455 ops/ms
+Iteration   5: 268.358 ops/ms
+
+# Run progress: 22.92% complete, ETA 00:06:24
+# Fork: 3 of 3
+# Warmup Iteration   1: 265.350 ops/ms
+# Warmup Iteration   2: 273.597 ops/ms
+# Warmup Iteration   3: 271.885 ops/ms
+# Warmup Iteration   4: 271.140 ops/ms
+# Warmup Iteration   5: 272.183 ops/ms
+Iteration   1: 271.632 ops/ms
+Iteration   2: 270.169 ops/ms
+Iteration   3: 270.386 ops/ms
+Iteration   4: 269.682 ops/ms
+Iteration   5: 269.168 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes128":
+  269.073 ±(99.9%) 1.368 ops/ms [Average]
+  (min, avg, max) = (267.121, 269.073, 271.632), stdev = 1.279
+  CI (99.9%): [267.706, 270.441] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes16
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 25.00% complete, ETA 00:06:14
+# Fork: 1 of 3
+# Warmup Iteration   1: 1635.575 ops/ms
+# Warmup Iteration   2: 1637.028 ops/ms
+# Warmup Iteration   3: 1626.061 ops/ms
+# Warmup Iteration   4: 1623.900 ops/ms
+# Warmup Iteration   5: 1635.398 ops/ms
+Iteration   1: 1630.705 ops/ms
+Iteration   2: 1637.864 ops/ms
+Iteration   3: 1631.752 ops/ms
+Iteration   4: 1628.138 ops/ms
+Iteration   5: 1634.160 ops/ms
+
+# Run progress: 27.08% complete, ETA 00:06:04
+# Fork: 2 of 3
+# Warmup Iteration   1: 1625.931 ops/ms
+# Warmup Iteration   2: 1633.876 ops/ms
+# Warmup Iteration   3: 1631.878 ops/ms
+# Warmup Iteration   4: 1641.163 ops/ms
+# Warmup Iteration   5: 1633.477 ops/ms
+Iteration   1: 1636.799 ops/ms
+Iteration   2: 1638.928 ops/ms
+Iteration   3: 1632.104 ops/ms
+Iteration   4: 1633.652 ops/ms
+Iteration   5: 1633.057 ops/ms
+
+# Run progress: 29.17% complete, ETA 00:05:53
+# Fork: 3 of 3
+# Warmup Iteration   1: 1629.257 ops/ms
+# Warmup Iteration   2: 1637.250 ops/ms
+# Warmup Iteration   3: 1629.987 ops/ms
+# Warmup Iteration   4: 1630.372 ops/ms
+# Warmup Iteration   5: 1631.134 ops/ms
+Iteration   1: 1627.404 ops/ms
+Iteration   2: 1627.604 ops/ms
+Iteration   3: 1630.486 ops/ms
+Iteration   4: 1633.875 ops/ms
+Iteration   5: 1629.541 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes16":
+  1632.405 ±(99.9%) 3.838 ops/ms [Average]
+  (min, avg, max) = (1627.404, 1632.405, 1638.928), stdev = 3.590
+  CI (99.9%): [1628.567, 1636.242] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes16
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 31.25% complete, ETA 00:05:43
+# Fork: 1 of 3
+# Warmup Iteration   1: 1510.497 ops/ms
+# Warmup Iteration   2: 1628.528 ops/ms
+# Warmup Iteration   3: 1625.420 ops/ms
+# Warmup Iteration   4: 1632.275 ops/ms
+# Warmup Iteration   5: 1627.955 ops/ms
+Iteration   1: 1630.079 ops/ms
+Iteration   2: 1631.525 ops/ms
+Iteration   3: 1632.668 ops/ms
+Iteration   4: 1624.199 ops/ms
+Iteration   5: 1624.132 ops/ms
+
+# Run progress: 33.33% complete, ETA 00:05:32
+# Fork: 2 of 3
+# Warmup Iteration   1: 1445.669 ops/ms
+# Warmup Iteration   2: 1549.020 ops/ms
+# Warmup Iteration   3: 1661.985 ops/ms
+# Warmup Iteration   4: 1694.042 ops/ms
+# Warmup Iteration   5: 1693.127 ops/ms
+Iteration   1: 1695.860 ops/ms
+Iteration   2: 1692.673 ops/ms
+Iteration   3: 1682.828 ops/ms
+Iteration   4: 1645.567 ops/ms
+Iteration   5: 1647.260 ops/ms
+
+# Run progress: 35.42% complete, ETA 00:05:22
+# Fork: 3 of 3
+# Warmup Iteration   1: 1499.418 ops/ms
+# Warmup Iteration   2: 1635.332 ops/ms
+# Warmup Iteration   3: 1652.727 ops/ms
+# Warmup Iteration   4: 1662.200 ops/ms
+# Warmup Iteration   5: 1664.690 ops/ms
+Iteration   1: 1668.325 ops/ms
+Iteration   2: 1660.604 ops/ms
+Iteration   3: 1664.105 ops/ms
+Iteration   4: 1667.175 ops/ms
+Iteration   5: 1667.752 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes16":
+  1655.650 ±(99.9%) 25.843 ops/ms [Average]
+  (min, avg, max) = (1624.132, 1655.650, 1695.860), stdev = 24.173
+  CI (99.9%): [1629.808, 1681.493] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes256
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 37.50% complete, ETA 00:05:11
+# Fork: 1 of 3
+# Warmup Iteration   1: 413.601 ops/ms
+# Warmup Iteration   2: 413.204 ops/ms
+# Warmup Iteration   3: 409.962 ops/ms
+# Warmup Iteration   4: 409.331 ops/ms
+# Warmup Iteration   5: 410.044 ops/ms
+Iteration   1: 408.457 ops/ms
+Iteration   2: 410.802 ops/ms
+Iteration   3: 409.650 ops/ms
+Iteration   4: 410.014 ops/ms
+Iteration   5: 411.070 ops/ms
+
+# Run progress: 39.58% complete, ETA 00:05:01
+# Fork: 2 of 3
+# Warmup Iteration   1: 410.682 ops/ms
+# Warmup Iteration   2: 411.274 ops/ms
+# Warmup Iteration   3: 407.849 ops/ms
+# Warmup Iteration   4: 407.802 ops/ms
+# Warmup Iteration   5: 410.638 ops/ms
+Iteration   1: 408.550 ops/ms
+Iteration   2: 407.875 ops/ms
+Iteration   3: 407.481 ops/ms
+Iteration   4: 410.180 ops/ms
+Iteration   5: 408.737 ops/ms
+
+# Run progress: 41.67% complete, ETA 00:04:51
+# Fork: 3 of 3
+# Warmup Iteration   1: 412.615 ops/ms
+# Warmup Iteration   2: 410.978 ops/ms
+# Warmup Iteration   3: 408.990 ops/ms
+# Warmup Iteration   4: 409.956 ops/ms
+# Warmup Iteration   5: 409.282 ops/ms
+Iteration   1: 409.931 ops/ms
+Iteration   2: 410.094 ops/ms
+Iteration   3: 409.886 ops/ms
+Iteration   4: 409.561 ops/ms
+Iteration   5: 410.133 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes256":
+  409.495 ±(99.9%) 1.117 ops/ms [Average]
+  (min, avg, max) = (407.481, 409.495, 411.070), stdev = 1.045
+  CI (99.9%): [408.378, 410.612] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes256
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 43.75% complete, ETA 00:04:40
+# Fork: 1 of 3
+# Warmup Iteration   1: 133.161 ops/ms
+# Warmup Iteration   2: 138.870 ops/ms
+# Warmup Iteration   3: 135.884 ops/ms
+# Warmup Iteration   4: 136.577 ops/ms
+# Warmup Iteration   5: 136.858 ops/ms
+Iteration   1: 137.972 ops/ms
+Iteration   2: 137.300 ops/ms
+Iteration   3: 136.924 ops/ms
+Iteration   4: 136.367 ops/ms
+Iteration   5: 136.158 ops/ms
+
+# Run progress: 45.83% complete, ETA 00:04:30
+# Fork: 2 of 3
+# Warmup Iteration   1: 133.870 ops/ms
+# Warmup Iteration   2: 137.417 ops/ms
+# Warmup Iteration   3: 140.258 ops/ms
+# Warmup Iteration   4: 137.715 ops/ms
+# Warmup Iteration   5: 137.455 ops/ms
+Iteration   1: 137.030 ops/ms
+Iteration   2: 137.895 ops/ms
+Iteration   3: 137.873 ops/ms
+Iteration   4: 138.283 ops/ms
+Iteration   5: 136.821 ops/ms
+
+# Run progress: 47.92% complete, ETA 00:04:19
+# Fork: 3 of 3
+# Warmup Iteration   1: 134.210 ops/ms
+# Warmup Iteration   2: 139.364 ops/ms
+# Warmup Iteration   3: 139.334 ops/ms
+# Warmup Iteration   4: 137.513 ops/ms
+# Warmup Iteration   5: 136.543 ops/ms
+Iteration   1: 137.048 ops/ms
+Iteration   2: 137.016 ops/ms
+Iteration   3: 136.932 ops/ms
+Iteration   4: 136.653 ops/ms
+Iteration   5: 137.524 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes256":
+  137.186 ±(99.9%) 0.656 ops/ms [Average]
+  (min, avg, max) = (136.158, 137.186, 138.283), stdev = 0.614
+  CI (99.9%): [136.530, 137.843] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes32
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 50.00% complete, ETA 00:04:09
+# Fork: 1 of 3
+# Warmup Iteration   1: 1633.122 ops/ms
+# Warmup Iteration   2: 1633.683 ops/ms
+# Warmup Iteration   3: 1640.467 ops/ms
+# Warmup Iteration   4: 1639.869 ops/ms
+# Warmup Iteration   5: 1639.175 ops/ms
+Iteration   1: 1646.008 ops/ms
+Iteration   2: 1639.427 ops/ms
+Iteration   3: 1632.353 ops/ms
+Iteration   4: 1634.724 ops/ms
+Iteration   5: 1640.920 ops/ms
+
+# Run progress: 52.08% complete, ETA 00:03:58
+# Fork: 2 of 3
+# Warmup Iteration   1: 1636.669 ops/ms
+# Warmup Iteration   2: 1626.683 ops/ms
+# Warmup Iteration   3: 1629.274 ops/ms
+# Warmup Iteration   4: 1631.107 ops/ms
+# Warmup Iteration   5: 1623.289 ops/ms
+Iteration   1: 1624.829 ops/ms
+Iteration   2: 1635.855 ops/ms
+Iteration   3: 1626.664 ops/ms
+Iteration   4: 1625.061 ops/ms
+Iteration   5: 1637.167 ops/ms
+
+# Run progress: 54.17% complete, ETA 00:03:48
+# Fork: 3 of 3
+# Warmup Iteration   1: 1640.305 ops/ms
+# Warmup Iteration   2: 1638.367 ops/ms
+# Warmup Iteration   3: 1628.748 ops/ms
+# Warmup Iteration   4: 1635.549 ops/ms
+# Warmup Iteration   5: 1625.399 ops/ms
+Iteration   1: 1621.916 ops/ms
+Iteration   2: 1628.195 ops/ms
+Iteration   3: 1628.271 ops/ms
+Iteration   4: 1634.304 ops/ms
+Iteration   5: 1628.943 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes32":
+  1632.309 ±(99.9%) 7.292 ops/ms [Average]
+  (min, avg, max) = (1621.916, 1632.309, 1646.008), stdev = 6.821
+  CI (99.9%): [1625.017, 1639.602] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes32
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 56.25% complete, ETA 00:03:38
+# Fork: 1 of 3
+# Warmup Iteration   1: 861.565 ops/ms
+# Warmup Iteration   2: 934.686 ops/ms
+# Warmup Iteration   3: 931.004 ops/ms
+# Warmup Iteration   4: 931.772 ops/ms
+# Warmup Iteration   5: 933.811 ops/ms
+Iteration   1: 929.807 ops/ms
+Iteration   2: 931.602 ops/ms
+Iteration   3: 933.334 ops/ms
+Iteration   4: 934.749 ops/ms
+Iteration   5: 932.433 ops/ms
+
+# Run progress: 58.33% complete, ETA 00:03:27
+# Fork: 2 of 3
+# Warmup Iteration   1: 868.889 ops/ms
+# Warmup Iteration   2: 936.912 ops/ms
+# Warmup Iteration   3: 948.602 ops/ms
+# Warmup Iteration   4: 967.864 ops/ms
+# Warmup Iteration   5: 968.750 ops/ms
+Iteration   1: 968.422 ops/ms
+Iteration   2: 971.138 ops/ms
+Iteration   3: 969.026 ops/ms
+Iteration   4: 969.306 ops/ms
+Iteration   5: 969.459 ops/ms
+
+# Run progress: 60.42% complete, ETA 00:03:17
+# Fork: 3 of 3
+# Warmup Iteration   1: 848.149 ops/ms
+# Warmup Iteration   2: 937.366 ops/ms
+# Warmup Iteration   3: 939.476 ops/ms
+# Warmup Iteration   4: 945.696 ops/ms
+# Warmup Iteration   5: 949.616 ops/ms
+Iteration   1: 946.897 ops/ms
+Iteration   2: 946.999 ops/ms
+Iteration   3: 949.223 ops/ms
+Iteration   4: 949.739 ops/ms
+Iteration   5: 949.602 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes32":
+  950.116 ±(99.9%) 16.865 ops/ms [Average]
+  (min, avg, max) = (929.807, 950.116, 971.138), stdev = 15.775
+  CI (99.9%): [933.251, 966.980] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes64
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 62.50% complete, ETA 00:03:06
+# Fork: 1 of 3
+# Warmup Iteration   1: 945.042 ops/ms
+# Warmup Iteration   2: 947.170 ops/ms
+# Warmup Iteration   3: 943.536 ops/ms
+# Warmup Iteration   4: 943.399 ops/ms
+# Warmup Iteration   5: 943.830 ops/ms
+Iteration   1: 943.233 ops/ms
+Iteration   2: 943.525 ops/ms
+Iteration   3: 943.619 ops/ms
+Iteration   4: 944.617 ops/ms
+Iteration   5: 945.651 ops/ms
+
+# Run progress: 64.58% complete, ETA 00:02:56
+# Fork: 2 of 3
+# Warmup Iteration   1: 944.519 ops/ms
+# Warmup Iteration   2: 944.990 ops/ms
+# Warmup Iteration   3: 944.837 ops/ms
+# Warmup Iteration   4: 944.218 ops/ms
+# Warmup Iteration   5: 942.810 ops/ms
+Iteration   1: 941.664 ops/ms
+Iteration   2: 943.221 ops/ms
+Iteration   3: 945.109 ops/ms
+Iteration   4: 940.211 ops/ms
+Iteration   5: 943.348 ops/ms
+
+# Run progress: 66.67% complete, ETA 00:02:46
+# Fork: 3 of 3
+# Warmup Iteration   1: 940.155 ops/ms
+# Warmup Iteration   2: 940.033 ops/ms
+# Warmup Iteration   3: 939.695 ops/ms
+# Warmup Iteration   4: 937.750 ops/ms
+# Warmup Iteration   5: 937.065 ops/ms
+Iteration   1: 939.118 ops/ms
+Iteration   2: 941.000 ops/ms
+Iteration   3: 940.053 ops/ms
+Iteration   4: 938.941 ops/ms
+Iteration   5: 938.262 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes64":
+  942.105 ±(99.9%) 2.543 ops/ms [Average]
+  (min, avg, max) = (938.262, 942.105, 945.651), stdev = 2.379
+  CI (99.9%): [939.562, 944.648] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes64
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 68.75% complete, ETA 00:02:35
+# Fork: 1 of 3
+# Warmup Iteration   1: 490.292 ops/ms
+# Warmup Iteration   2: 515.348 ops/ms
+# Warmup Iteration   3: 512.413 ops/ms
+# Warmup Iteration   4: 511.117 ops/ms
+# Warmup Iteration   5: 511.087 ops/ms
+Iteration   1: 511.314 ops/ms
+Iteration   2: 511.360 ops/ms
+Iteration   3: 511.590 ops/ms
+Iteration   4: 511.065 ops/ms
+Iteration   5: 510.900 ops/ms
+
+# Run progress: 70.83% complete, ETA 00:02:25
+# Fork: 2 of 3
+# Warmup Iteration   1: 486.972 ops/ms
+# Warmup Iteration   2: 510.864 ops/ms
+# Warmup Iteration   3: 508.783 ops/ms
+# Warmup Iteration   4: 508.255 ops/ms
+# Warmup Iteration   5: 508.016 ops/ms
+Iteration   1: 508.271 ops/ms
+Iteration   2: 508.569 ops/ms
+Iteration   3: 508.421 ops/ms
+Iteration   4: 507.675 ops/ms
+Iteration   5: 507.720 ops/ms
+
+# Run progress: 72.92% complete, ETA 00:02:15
+# Fork: 3 of 3
+# Warmup Iteration   1: 489.310 ops/ms
+# Warmup Iteration   2: 519.106 ops/ms
+# Warmup Iteration   3: 517.259 ops/ms
+# Warmup Iteration   4: 517.203 ops/ms
+# Warmup Iteration   5: 517.228 ops/ms
+Iteration   1: 517.187 ops/ms
+Iteration   2: 517.172 ops/ms
+Iteration   3: 517.166 ops/ms
+Iteration   4: 516.707 ops/ms
+Iteration   5: 517.200 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextBytes64":
+  512.154 ±(99.9%) 4.119 ops/ms [Average]
+  (min, avg, max) = (507.675, 512.154, 517.200), stdev = 3.853
+  CI (99.9%): [508.036, 516.273] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextInt
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 75.00% complete, ETA 00:02:04
+# Fork: 1 of 3
+# Warmup Iteration   1: 1594.357 ops/ms
+# Warmup Iteration   2: 1597.432 ops/ms
+# Warmup Iteration   3: 1598.177 ops/ms
+# Warmup Iteration   4: 1593.725 ops/ms
+# Warmup Iteration   5: 1599.590 ops/ms
+Iteration   1: 1601.140 ops/ms
+Iteration   2: 1595.531 ops/ms
+Iteration   3: 1595.808 ops/ms
+Iteration   4: 1592.694 ops/ms
+Iteration   5: 1589.433 ops/ms
+
+# Run progress: 77.08% complete, ETA 00:01:54
+# Fork: 2 of 3
+# Warmup Iteration   1: 1595.183 ops/ms
+# Warmup Iteration   2: 1593.673 ops/ms
+# Warmup Iteration   3: 1598.041 ops/ms
+# Warmup Iteration   4: 1597.162 ops/ms
+# Warmup Iteration   5: 1594.772 ops/ms
+Iteration   1: 1599.046 ops/ms
+Iteration   2: 1591.037 ops/ms
+Iteration   3: 1593.367 ops/ms
+Iteration   4: 1593.150 ops/ms
+Iteration   5: 1596.368 ops/ms
+
+# Run progress: 79.17% complete, ETA 00:01:43
+# Fork: 3 of 3
+# Warmup Iteration   1: 1592.859 ops/ms
+# Warmup Iteration   2: 1594.463 ops/ms
+# Warmup Iteration   3: 1595.052 ops/ms
+# Warmup Iteration   4: 1596.930 ops/ms
+# Warmup Iteration   5: 1598.500 ops/ms
+Iteration   1: 1592.568 ops/ms
+Iteration   2: 1593.713 ops/ms
+Iteration   3: 1596.154 ops/ms
+Iteration   4: 1594.796 ops/ms
+Iteration   5: 1593.603 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextInt":
+  1594.561 ±(99.9%) 3.168 ops/ms [Average]
+  (min, avg, max) = (1589.433, 1594.561, 1601.140), stdev = 2.964
+  CI (99.9%): [1591.392, 1597.729] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextInt
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 81.25% complete, ETA 00:01:33
+# Fork: 1 of 3
+# Warmup Iteration   1: 2750.380 ops/ms
+# Warmup Iteration   2: 2885.747 ops/ms
+# Warmup Iteration   3: 2866.770 ops/ms
+# Warmup Iteration   4: 2878.500 ops/ms
+# Warmup Iteration   5: 2889.410 ops/ms
+Iteration   1: 2902.706 ops/ms
+Iteration   2: 2924.223 ops/ms
+Iteration   3: 2930.538 ops/ms
+Iteration   4: 2932.494 ops/ms
+Iteration   5: 2912.759 ops/ms
+
+# Run progress: 83.33% complete, ETA 00:01:23
+# Fork: 2 of 3
+# Warmup Iteration   1: 2626.881 ops/ms
+# Warmup Iteration   2: 2767.988 ops/ms
+# Warmup Iteration   3: 2824.273 ops/ms
+# Warmup Iteration   4: 2785.722 ops/ms
+# Warmup Iteration   5: 2804.310 ops/ms
+Iteration   1: 2792.686 ops/ms
+Iteration   2: 2825.664 ops/ms
+Iteration   3: 2791.274 ops/ms
+Iteration   4: 2807.993 ops/ms
+Iteration   5: 2804.677 ops/ms
+
+# Run progress: 85.42% complete, ETA 00:01:12
+# Fork: 3 of 3
+# Warmup Iteration   1: 2657.624 ops/ms
+# Warmup Iteration   2: 2870.816 ops/ms
+# Warmup Iteration   3: 2896.275 ops/ms
+# Warmup Iteration   4: 2883.260 ops/ms
+# Warmup Iteration   5: 2879.268 ops/ms
+Iteration   1: 2819.694 ops/ms
+Iteration   2: 2863.928 ops/ms
+Iteration   3: 2927.299 ops/ms
+Iteration   4: 2909.849 ops/ms
+Iteration   5: 2890.919 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextInt":
+  2869.114 ±(99.9%) 59.609 ops/ms [Average]
+  (min, avg, max) = (2791.274, 2869.114, 2932.494), stdev = 55.758
+  CI (99.9%): [2809.505, 2928.723] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextLong
+# Parameters: (algorithm = geturandom)
+
+# Run progress: 87.50% complete, ETA 00:01:02
+# Fork: 1 of 3
+# Warmup Iteration   1: 797.808 ops/ms
+# Warmup Iteration   2: 797.894 ops/ms
+# Warmup Iteration   3: 799.005 ops/ms
+# Warmup Iteration   4: 798.634 ops/ms
+# Warmup Iteration   5: 799.782 ops/ms
+Iteration   1: 797.952 ops/ms
+Iteration   2: 800.506 ops/ms
+Iteration   3: 799.409 ops/ms
+Iteration   4: 798.088 ops/ms
+Iteration   5: 797.481 ops/ms
+
+# Run progress: 89.58% complete, ETA 00:00:51
+# Fork: 2 of 3
+# Warmup Iteration   1: 798.287 ops/ms
+# Warmup Iteration   2: 798.650 ops/ms
+# Warmup Iteration   3: 798.086 ops/ms
+# Warmup Iteration   4: 785.979 ops/ms
+# Warmup Iteration   5: 798.438 ops/ms
+Iteration   1: 798.227 ops/ms
+Iteration   2: 796.924 ops/ms
+Iteration   3: 801.856 ops/ms
+Iteration   4: 799.812 ops/ms
+Iteration   5: 796.769 ops/ms
+
+# Run progress: 91.67% complete, ETA 00:00:41
+# Fork: 3 of 3
+# Warmup Iteration   1: 798.482 ops/ms
+# Warmup Iteration   2: 796.962 ops/ms
+# Warmup Iteration   3: 797.435 ops/ms
+# Warmup Iteration   4: 796.682 ops/ms
+# Warmup Iteration   5: 799.888 ops/ms
+Iteration   1: 797.921 ops/ms
+Iteration   2: 798.319 ops/ms
+Iteration   3: 797.796 ops/ms
+Iteration   4: 796.868 ops/ms
+Iteration   5: 798.038 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextLong":
+  798.398 ±(99.9%) 1.525 ops/ms [Average]
+  (min, avg, max) = (796.769, 798.398, 801.856), stdev = 1.426
+  CI (99.9%): [796.873, 799.923] (assumes normal distribution)
+
+
+# JMH version: 1.19
+# VM version: JDK 9.0.1, VM 9.0.1+11
+# VM invoker: /home/marschall/bin/java/jdk-9.0.1/bin/java
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java9.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextLong
+# Parameters: (algorithm = NativePRNGNonBlocking)
+
+# Run progress: 93.75% complete, ETA 00:00:31
+# Fork: 1 of 3
+# Warmup Iteration   1: 1332.627 ops/ms
+# Warmup Iteration   2: 1357.582 ops/ms
+# Warmup Iteration   3: 1378.921 ops/ms
+# Warmup Iteration   4: 1384.604 ops/ms
+# Warmup Iteration   5: 1382.958 ops/ms
+Iteration   1: 1388.230 ops/ms
+Iteration   2: 1382.428 ops/ms
+Iteration   3: 1384.830 ops/ms
+Iteration   4: 1399.318 ops/ms
+Iteration   5: 1394.879 ops/ms
+
+# Run progress: 95.83% complete, ETA 00:00:20
+# Fork: 2 of 3
+# Warmup Iteration   1: 1334.482 ops/ms
+# Warmup Iteration   2: 1385.085 ops/ms
+# Warmup Iteration   3: 1407.435 ops/ms
+# Warmup Iteration   4: 1429.616 ops/ms
+# Warmup Iteration   5: 1444.683 ops/ms
+Iteration   1: 1464.774 ops/ms
+Iteration   2: 1467.896 ops/ms
+Iteration   3: 1475.513 ops/ms
+Iteration   4: 1487.385 ops/ms
+Iteration   5: 1481.936 ops/ms
+
+# Run progress: 97.92% complete, ETA 00:00:10
+# Fork: 3 of 3
+# Warmup Iteration   1: 1334.079 ops/ms
+# Warmup Iteration   2: 1401.382 ops/ms
+# Warmup Iteration   3: 1413.208 ops/ms
+# Warmup Iteration   4: 1415.216 ops/ms
+# Warmup Iteration   5: 1414.362 ops/ms
+Iteration   1: 1415.260 ops/ms
+Iteration   2: 1424.147 ops/ms
+Iteration   3: 1426.777 ops/ms
+Iteration   4: 1418.660 ops/ms
+Iteration   5: 1420.379 ops/ms
+
+
+Result "com.github.marschall.getrandom.benchmarks.SecureRandomBenchmark.nextLong":
+  1428.827 ±(99.9%) 39.788 ops/ms [Average]
+  (min, avg, max) = (1382.428, 1428.827, 1487.385), stdev = 37.218
+  CI (99.9%): [1389.039, 1468.616] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:08:18
 
 Benchmark                                     (algorithm)   Mode  Cnt     Score    Error   Units
-SecureRandomBenchmark.nextBoolean              geturandom  thrpt  100  2058.299 ±  1.427  ops/ms
-SecureRandomBenchmark.nextBoolean   NativePRNGNonBlocking  thrpt  100  4848.578 ± 43.010  ops/ms
-SecureRandomBenchmark.nextBytes256             geturandom  thrpt  100   514.638 ±  0.339  ops/ms
-SecureRandomBenchmark.nextBytes256  NativePRNGNonBlocking  thrpt  100   176.932 ±  0.830  ops/ms
-SecureRandomBenchmark.nextInt                  geturandom  thrpt  100  2052.104 ±  1.243  ops/ms
-SecureRandomBenchmark.nextInt       NativePRNGNonBlocking  thrpt  100  3787.189 ± 35.657  ops/ms
-SecureRandomBenchmark.nextLong                 geturandom  thrpt  100  1028.045 ±  0.741  ops/ms
-SecureRandomBenchmark.nextLong      NativePRNGNonBlocking  thrpt  100  1899.361 ± 14.892  ops/ms
+SecureRandomBenchmark.nextBoolean              geturandom  thrpt   15  1598.966 ±  2.064  ops/ms
+SecureRandomBenchmark.nextBoolean   NativePRNGNonBlocking  thrpt   15  3551.984 ± 72.768  ops/ms
+SecureRandomBenchmark.nextBytes128             geturandom  thrpt   15   656.358 ±  1.378  ops/ms
+SecureRandomBenchmark.nextBytes128  NativePRNGNonBlocking  thrpt   15   269.073 ±  1.368  ops/ms
+SecureRandomBenchmark.nextBytes16              geturandom  thrpt   15  1632.405 ±  3.838  ops/ms
+SecureRandomBenchmark.nextBytes16   NativePRNGNonBlocking  thrpt   15  1655.650 ± 25.843  ops/ms
+SecureRandomBenchmark.nextBytes256             geturandom  thrpt   15   409.495 ±  1.117  ops/ms
+SecureRandomBenchmark.nextBytes256  NativePRNGNonBlocking  thrpt   15   137.186 ±  0.656  ops/ms
+SecureRandomBenchmark.nextBytes32              geturandom  thrpt   15  1632.309 ±  7.292  ops/ms
+SecureRandomBenchmark.nextBytes32   NativePRNGNonBlocking  thrpt   15   950.116 ± 16.865  ops/ms
+SecureRandomBenchmark.nextBytes64              geturandom  thrpt   15   942.105 ±  2.543  ops/ms
+SecureRandomBenchmark.nextBytes64   NativePRNGNonBlocking  thrpt   15   512.154 ±  4.119  ops/ms
+SecureRandomBenchmark.nextInt                  geturandom  thrpt   15  1594.561 ±  3.168  ops/ms
+SecureRandomBenchmark.nextInt       NativePRNGNonBlocking  thrpt   15  2869.114 ± 59.609  ops/ms
+SecureRandomBenchmark.nextLong                 geturandom  thrpt   15   798.398 ±  1.525  ops/ms
+SecureRandomBenchmark.nextLong      NativePRNGNonBlocking  thrpt   15  1428.827 ± 39.788  ops/ms
 
+Benchmark result is saved to jmh-result.text

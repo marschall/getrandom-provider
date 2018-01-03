@@ -1,20 +1,29 @@
 # JMH version: 1.19
 # VM version: JDK 1.8.0_152, VM 25.152-b16
 # VM invoker: /home/marschall/bin/java/jdk1.8.0_152/jre/bin/java
-# VM options: -XX:+UseParallelGC -Xmx1g -Xms1g
-# Warmup: 10 iterations, 1 s each
-# Measurement: 10 iterations, 1 s each
+# VM options: -XX:+UseParallelGC -Xmx32g -Xms32g -Djava.security.properties=src/main/resources/jvm.java8.security -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 2 threads, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
 
 Benchmark                                     (algorithm)   Mode  Cnt     Score     Error   Units
-SecureRandomBenchmark.nextBoolean              geturandom  thrpt  100  2323.858 ±   8.610  ops/ms
-SecureRandomBenchmark.nextBoolean   NativePRNGNonBlocking  thrpt  100  6121.628 ± 153.400  ops/ms
-SecureRandomBenchmark.nextBytes256             geturandom  thrpt  100   551.225 ±   1.789  ops/ms
-SecureRandomBenchmark.nextBytes256  NativePRNGNonBlocking  thrpt  100   189.387 ±   0.569  ops/ms
-SecureRandomBenchmark.nextInt                  geturandom  thrpt  100  2324.177 ±   6.892  ops/ms
-SecureRandomBenchmark.nextInt       NativePRNGNonBlocking  thrpt  100  4063.241 ±  32.184  ops/ms
-SecureRandomBenchmark.nextLong                 geturandom  thrpt  100  1161.789 ±   3.871  ops/ms
-SecureRandomBenchmark.nextLong      NativePRNGNonBlocking  thrpt  100  1989.077 ±  21.751  ops/ms
+SecureRandomBenchmark.nextBoolean              geturandom  thrpt   15  1849.031 ±  16.397  ops/ms
+SecureRandomBenchmark.nextBoolean   NativePRNGNonBlocking  thrpt   15  4682.340 ± 107.327  ops/ms
+SecureRandomBenchmark.nextBytes128             geturandom  thrpt   15   682.979 ±  18.880  ops/ms
+SecureRandomBenchmark.nextBytes128  NativePRNGNonBlocking  thrpt   15   279.523 ±   4.204  ops/ms
+SecureRandomBenchmark.nextBytes16              geturandom  thrpt   15  1776.859 ±  13.897  ops/ms
+SecureRandomBenchmark.nextBytes16   NativePRNGNonBlocking  thrpt   15  1413.791 ±   8.620  ops/ms
+SecureRandomBenchmark.nextBytes256             geturandom  thrpt   15   426.736 ±   8.161  ops/ms
+SecureRandomBenchmark.nextBytes256  NativePRNGNonBlocking  thrpt   15   150.085 ±   0.627  ops/ms
+SecureRandomBenchmark.nextBytes32              geturandom  thrpt   15  1765.590 ±  24.968  ops/ms
+SecureRandomBenchmark.nextBytes32   NativePRNGNonBlocking  thrpt   15   850.783 ±   7.643  ops/ms
+SecureRandomBenchmark.nextBytes64              geturandom  thrpt   15   970.818 ±  17.776  ops/ms
+SecureRandomBenchmark.nextBytes64   NativePRNGNonBlocking  thrpt   15   500.983 ±   3.146  ops/ms
+SecureRandomBenchmark.nextInt                  geturandom  thrpt   15  1826.922 ±  33.102  ops/ms
+SecureRandomBenchmark.nextInt       NativePRNGNonBlocking  thrpt   15  3014.241 ±  99.372  ops/ms
+SecureRandomBenchmark.nextLong                 geturandom  thrpt   15   907.312 ±  10.125  ops/ms
+SecureRandomBenchmark.nextLong      NativePRNGNonBlocking  thrpt   15  1514.261 ±  46.632  ops/ms
 
+Benchmark result is saved to jmh-result.text
