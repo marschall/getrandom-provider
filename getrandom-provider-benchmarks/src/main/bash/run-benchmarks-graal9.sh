@@ -5,9 +5,10 @@ set -e
 run_benchark() {
    $JAVA_HOME/bin/java \
      -XX:+UseParallelGC \
+     -Xmx32g -Xms32g \
      -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler \
      -Djava.security.properties=src/main/resources/jvm.java9.security \
-     -Xmx32g -Xms32g \
+     -Djava.library.path=/home/marschall/git/getrandom-provider/getrandom-provider-benchmarks/target \
      -jar target/getrandom-provider-benchmarks-${VERSION}.jar \
        $1 threads-$1.txt
 }

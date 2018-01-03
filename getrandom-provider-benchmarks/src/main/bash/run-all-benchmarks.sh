@@ -19,22 +19,24 @@ reaname_output() {
 }
 
 main() {
+  extract_so
+
   export JAVA_HOME=/home/marschall/bin/java/jdk-8
   ./src/main/bash/run-benchmarks-8.sh
   reaname_output java-8
 
-#  export JAVA_HOME=/home/marschall/bin/java/graalvm-8
-#  ./src/main/bash/run-benchmarks.sh
-#  reaname_output graal-8
+  export JAVA_HOME=/home/marschall/bin/java/graalvm-8
+  ./src/main/bash/run-benchmarks-8.sh
+  reaname_output graal-8
 
   export JAVA_HOME=/home/marschall/bin/java/jdk-9
   ./src/main/bash/run-benchmarks-9.sh
   reaname_output java-9
 
-#  export JAVA_HOME=/home/marschall/bin/java/jdk-9
-#  ./src/main/bash/run-benchmarks-graal9.sh
-#  reaname_output graal-9
-#
+  export JAVA_HOME=/home/marschall/bin/java/jdk-9
+  ./src/main/bash/run-benchmarks-graal9.sh
+  reaname_output graal-9
+
 #  export JAVA_HOME=/home/marschall/bin/java/openj9-9
 #  ./src/main/bash/run-benchmarks-j9.sh
 #  reaname_output ibm-9
