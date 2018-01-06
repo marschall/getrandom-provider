@@ -28,14 +28,14 @@ Alternatively a blocking (/dev/random) instance of the provider can be acquired 
 SecureRandom.getInstance("getrandom"); // GetrandomProvider.GETRANDOM
 ```
 
-The /dev/urandom variant in the preferred one, the /dev/random variant is only added for completeness, see [Myths about /dev/urandom](https://www.2uo.de/myths-about-urandom/).
+The /dev/urandom variant is the preferred one, the /dev/random variant is only added for completeness, see [Myths about /dev/urandom](https://www.2uo.de/myths-about-urandom/).
 
 ## Configuration
 
 The provider can be configured in two different ways
 
-1. Programmatic configuration
-1. Static configuration
+1. programmatic configuration
+1. static configuration
 
 For best startup performance it is recommended to extract the .so from the JAR and add it to a folder present in the `LD_LIBRARY_PATH` environment variable or the `java.library.path` system property. Otherwise this library will extract the .so to a temporary folder the first time it is called.
 
