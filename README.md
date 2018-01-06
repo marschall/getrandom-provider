@@ -39,7 +39,7 @@ The provider can be configured in two different ways
 
 For best startup performance it is recommended to extract the .so from the JAR and add it to a folder present in the `LD_LIBRARY_PATH` environment variable or the `java.library.path` system property. Otherwise this library will extract the .so to a temporary folder the first time it is called.
 
-### Programmatic configuration
+### Programmatic Configuration
 
 The provider can be registered programmatically using
 
@@ -47,7 +47,21 @@ The provider can be registered programmatically using
 Security.addProvider(new GetrandomProvider());
 ```
 
-### Static configuration
+### Static Configuration Java 8
+
+The provider can be configured statically in the `java.security` file by adding the provider at the end
+
+```
+security.provider.N=com.github.marschall.getrandom.GetrandomProvider
+```
+
+`N` should be the value of the last provider incremented by 1 (for Oracle/OpenJDK 8 on Linux N should likely be 10).
+
+This can be done [per JVM installation](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/HowToImplAProvider.html#Configuring) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
+
+Note that for this to work the provider JAR needs to be in the class path or extension folder.
+
+### Static Configuration Java 9+
 
 The provider can be configured statically in the `java.security` file by adding the provider at the end
 
@@ -55,7 +69,7 @@ The provider can be configured statically in the `java.security` file by adding 
 security.provider.N=getrandom
 ```
 
-`N` should be the value of the last provider incremented by 1 (for Oracle/OpenJDK 8 on Linux N should likely be 10 and on Oracle/OpenJDK 8 on Linux N should likely be 13).
+`N` should be the value of the last provider incremented by 1 (for Oracle/OpenJDK 9 on Linux N should likely be 13).
 
 This can be done [per JVM installation](https://docs.oracle.com/javase/9/security/howtoimplaprovider.htm#GUID-831AA25F-F702-442D-A2E4-8DA6DEA16F33) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
 
@@ -74,9 +88,14 @@ This security provider can be used for session id generation in Tomcat. In order
 
 Points 1, 2 and 3 can be configured in `CATALINA_BASE/bin/setenv.sh`
 
-```
-CLASSPATH=/path/to/getrandom-provider-0.1.0.jar
-CATALINA_OPTS=-Djava.library.path=/path/to/folder/with/so -Djava.security.properties=/path/to/jvm.java.security
+```sh
+#!/bin/sh
+
+CLASSPATH="/path/to/getrandom-provider-0.1.0.jar"
+CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/path/to/folder/with/so -Djava.security.properties=/path/to/jvm.java.security"
+
+export CLASSPATH
+export CATALINA_OPTS
 ```
 
 Point can be configured on [the Manager Component](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) in `conf/context.xml` by setting `secureRandomAlgorithm` to `geturandom`
