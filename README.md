@@ -4,12 +4,13 @@ A `SecureRandomSPI` that makes [getrandom()](http://man7.org/linux/man-pages/man
 
 * uses syscall, does not depend on glibc wrapper
 * tries to use stack allocation rather than allocation on the C heap
-* is marked as thread safe so concurrent access through `SecureRandom` will not synchronize in Java 9 and later, but there seems to be a kernel lock on /dev/urandom so you will likely not get additional parallelism
-* unlike the `NativePRNG` variants does not use a file handle
-* unlike the `NativePRNG` variants does not have a global lock, but see comments on the kernel lock above
-* unlike the `NativePRNG` variants does not additionally mix with SHA-1
-* unlike the `NativePRNG` variants blocks until the urandom source has been initialized
-* unlike the `NativePRNG` variants zeros out native memory
+* is marked as thread safe so concurrent access through `SecureRandom` will not synchronize in Java 9 and later, however there seems to be a kernel lock on /dev/urandom so you will likely not get additional parallelism
+* unlike the `NativePRNG` variants
+  * does not use a file handle
+  * does not have a global lock, but see comments on the kernel lock above
+  * does not additionally mix with `SHA1PRNG`
+  * blocks until the urandom source has been initialized
+  * zeros out native memory
 * supports the ServiceLoader mechanism
 * is a Java 9 module but works on Java 8
 * no dependencies outside the `java.base` module
@@ -55,7 +56,7 @@ The provider can be configured statically in the `java.security` file by adding 
 security.provider.N=com.github.marschall.getrandom.GetrandomProvider
 ```
 
-`N` should be the value of the last provider incremented by 1 (for Oracle/OpenJDK 8 on Linux N should likely be 10).
+`N` should be the value of the last provider incremented by 1. For Oracle/OpenJDK 8 on Linux `N` should likely be 10.
 
 This can be done [per JVM installation](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/HowToImplAProvider.html#Configuring) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
 
@@ -69,7 +70,7 @@ The provider can be configured statically in the `java.security` file by adding 
 security.provider.N=getrandom
 ```
 
-`N` should be the value of the last provider incremented by 1 (for Oracle/OpenJDK 9 on Linux N should likely be 13).
+`N` should be the value of the last provider incremented by 1. For Oracle/OpenJDK 9 on Linux `N` should likely be 13.
 
 This can be done [per JVM installation](https://docs.oracle.com/javase/9/security/howtoimplaprovider.htm#GUID-831AA25F-F702-442D-A2E4-8DA6DEA16F33) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
 
