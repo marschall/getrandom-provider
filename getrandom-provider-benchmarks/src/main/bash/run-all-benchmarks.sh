@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=0.1.0-SNAPSHOT
+VERSION=0.1.1-SNAPSHOT
 export VERSION
 
 extract_so() {
