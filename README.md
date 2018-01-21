@@ -92,7 +92,7 @@ Points 1, 2 and 3 can be configured in `CATALINA_BASE/bin/setenv.sh`
 ```sh
 #!/bin/sh
 
-CLASSPATH="/path/to/getrandom-provider-0.1.0.jar"
+CLASSPATH="/path/to/getrandom-provider-0.1.1.jar"
 CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/path/to/folder/with/so -Djava.security.properties=/path/to/jvm.java.security"
 
 export CLASSPATH
