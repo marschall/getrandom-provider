@@ -33,7 +33,6 @@ public final class GetrandomProvider extends Provider {
     this.put("SecureRandom." + GETRANDOM, GetrandomSecureRandom.class.getName());
     this.put("SecureRandom." + GETRANDOM + " ThreadSafe", "true");
     this.put("SecureRandom." + GETURANDOM, GeturandomSecureRandom.class.getName());
-    this.put("SecureRandom." + GETURANDOM, GeturandomSecureRandom.class.getName());
     this.put("SecureRandom." + GETURANDOM + " ThreadSafe", "true");
   }
 
