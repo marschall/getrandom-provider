@@ -1,2 +1,0 @@
-# add the provider at the end
-security.provider.10=com.github.marschall.getrandom.GetrandomProvider
