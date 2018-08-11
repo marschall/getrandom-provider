@@ -78,6 +78,10 @@ The provider uses the ServiceLoader mechanism therefore using the `getrandom` st
 
 Note that for this to work the provider JAR needs to be in the class path or module path.
 
+### Performance
+
+[Performance](https://github.com/marschall/random-provider-benchmarks/tree/master/src/main/output/meltdown) compared to `NativePRNGNonBlocking` is lower for small, single threaded workloads due to the syscall overhead and additionally negatively impacted by the meltdown patches. However for large or threaded workloads performance is higher.
+
 ### Usage for Tomcat Session Ids
 
 This security provider can be used for session id generation in Tomcat. In order for that several things need to be configured:
