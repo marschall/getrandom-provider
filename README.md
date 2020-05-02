@@ -58,7 +58,7 @@ security.provider.N=com.github.marschall.getrandom.GetrandomProvider
 
 `N` should be the value of the last provider incremented by 1. For Oracle/OpenJDK 8 on Linux `N` should likely be 10.
 
-This can be done [per JVM installation](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/HowToImplAProvider.html#Configuring) or [per JVM Instance](https://dzone.com/articles/how-override-java-security).
+This can be done [per JVM installation](https://docs.oracle.com/en/java/javase/11/security/howtoimplaprovider.html#GUID-831AA25F-F702-442D-A2E4-8DA6DEA16F33) or [per JVM Instance](https://docs.oracle.com/en/java/javase/11/security/java-authentication-and-authorization-service-jaas-reference-guide.html#GUID-106F4B32-B9A3-4B75-BDBF-29B252BB3F53).
 
 Note that for this to work the provider JAR needs to be in the class path or extension folder.
 
