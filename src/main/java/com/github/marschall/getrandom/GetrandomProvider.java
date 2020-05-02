@@ -17,12 +17,12 @@ public final class GetrandomProvider extends Provider {
   public static final String NAME = "getrandom";
 
   /**
-   * The name algorithm that uses getrandom() with a blocking device (/dev/random).
+   * The name of the algorithm that uses getrandom() with a blocking device (/dev/random).
    */
   public static final String GETRANDOM = "getrandom";
 
   /**
-   * The name algorithm that uses getrandom() with a non-blocking device (/dev/urandom).
+   * The name of the algorithm that uses getrandom() with a non-blocking device (/dev/urandom).
    */
   public static final String GETURANDOM = "geturandom";
 
