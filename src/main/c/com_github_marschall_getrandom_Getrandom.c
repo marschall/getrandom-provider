@@ -1,7 +1,8 @@
 #include <jni.h>
 
 #include <unistd.h>           /* for syscall() */
-#include <sys/syscall.h>      /* for __NR_* definitions */
+#include <sys/syscall.h>      /* for SYS_* definitions */
+#include <linux/random.h>     /* for GRND_RANDOM definition */
 #include <stdlib.h>           /* for malloc and free */
 #include <errno.h>            /* errno */
 #include <string.h>           /* memset */
@@ -13,15 +14,13 @@
  */
 #define BUFFER_SIZE 2048
 
-#define GRND_RANDOM 0x02
-
  _Static_assert (com_github_marschall_getrandom_Getrandom_EFAULT == EFAULT, "com_github_marschall_getrandom_Getrandom_EFAULT == EFAULT");
  _Static_assert (com_github_marschall_getrandom_Getrandom_EINTR == EINTR, "com_github_marschall_getrandom_Getrandom_EINTR == EINTR");
  _Static_assert (com_github_marschall_getrandom_Getrandom_EINVAL == EINVAL, "com_github_marschall_getrandom_Getrandom_EINVAL == EINVAL");
 
 static inline ssize_t getrandom(void *buf, size_t buflen, unsigned int flags)
 {
-  return syscall(__NR_getrandom, buf, buflen, flags);
+  return syscall(SYS_getrandom, buf, buflen, flags);
 }
 
 JNIEXPORT jint JNICALL Java_com_github_marschall_getrandom_Getrandom_getrandom0
