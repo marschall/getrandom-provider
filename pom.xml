@@ -18,25 +18,27 @@
     <tag>HEAD</tag>
   </scm>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.8.2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- Only required to run tests in an IDE that bundles an older version -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- Only required to run tests in an IDE that bundles an older version -->
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <version>${junit.platform.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -105,6 +107,15 @@
     </resources>
     <plugins>
       <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerArgs>
+            <arg>-h</arg>
+            <arg>${project.build.directory}/nar/javah-include</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <links>
@@ -128,11 +139,6 @@
           <java>
             <include>true</include>
           </java>
-          <javah>
-            <excludes>
-              <exclude>module-info.class</exclude>
-            </excludes>
-          </javah>
           <libraries>
             <library>
               <type>jni</type>
@@ -151,7 +157,6 @@
           <execution>
             <id>nar-compile</id>
             <goals>
-              <goal>nar-javah</goal>
               <goal>nar-compile</goal>
             </goals>
             <phase>compile</phase>
@@ -181,20 +186,6 @@
             <descriptor>src/assembly/jni.xml</descriptor>
           </descriptors>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <forkMode>once</forkMode>
-          <argLine>-Xcheck:jni -Djava.library.path=${project.build.directory}/nar/${project.artifactId}-${project.version}-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni -Djava.security.properties=${project.basedir}/src/test/resources/jvm.java.security</argLine>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.jboss.jandex</groupId>
@@ -339,6 +330,17 @@
               <target>${java.version}</target>
             </configuration>
           </plugin>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <forkMode>once</forkMode>
+              <argLine>
+                -Xcheck:jni
+                -Djava.library.path=${project.build.directory}/nar/${project.artifactId}-${project.version}-${nar.aol}-jni/lib/${nar.aol}/jni
+                -Djava.security.properties=${project.basedir}/src/test/resources/additional.java8.security
+              </argLine>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -351,6 +353,9 @@
         <plugins>
           <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <release>8</release>
+            </configuration>
             <executions>
               <execution>
                 <id>compile-java-9</id>
@@ -368,6 +373,17 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <forkMode>once</forkMode>
+              <argLine>
+                -Xcheck:jni
+                -Djava.library.path=${project.build.directory}/nar/${project.artifactId}-${project.version}-${nar.aol}-jni/lib/${nar.aol}/jni
+                -Djava.security.properties=${project.basedir}/src/test/resources/additional.java9.security
+              </argLine>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -377,9 +393,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <jmh.version>1.19</jmh.version>
-    <junit.jupiter.version>5.1.0</junit.jupiter.version>
-    <junit.platform.version>1.1.0</junit.platform.version>
   </properties>
 
 </project>
