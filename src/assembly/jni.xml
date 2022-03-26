@@ -14,7 +14,7 @@
       <outputDirectory>/</outputDirectory>
     </fileSet>
     <fileSet>
-      <directory>${project.build.directory}/nar/${project.artifactId}-${project.version}-amd64-Linux-gpp-jni/lib/amd64-Linux-gpp/jni/</directory>
+      <directory>${project.build.directory}/nar/${project.artifactId}-${project.version}-${nar.aol}-jni/lib/${nar.aol}/jni</directory>
       <includes>
         <include>*.so</include>
       </includes>

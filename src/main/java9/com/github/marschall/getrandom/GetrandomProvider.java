@@ -29,7 +29,7 @@ public final class GetrandomProvider extends Provider {
   private static final long serialVersionUID = 1L;
 
   public GetrandomProvider() {
-    super(NAME, 0.12d, "getrandom (SecureRandom)");
+    super(NAME, Getrandom.VERSION, "getrandom (SecureRandom)");
     this.put("SecureRandom." + GETRANDOM, GetrandomSecureRandom.class.getName());
     this.put("SecureRandom." + GETRANDOM + " ThreadSafe", "true");
     this.put("SecureRandom." + GETURANDOM, GeturandomSecureRandom.class.getName());

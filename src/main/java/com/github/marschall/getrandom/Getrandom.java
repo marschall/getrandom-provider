@@ -11,6 +11,8 @@ import java.util.Objects;
 
 final class Getrandom {
 
+  static final String VERSION;
+
   static {
     String version = getVersion();
     String libraryName = "getrandom-provider-" + version;
@@ -32,6 +34,7 @@ final class Getrandom {
         }
       }
     }
+    VERSION = version;
   }
 
   private static String getVersion() {

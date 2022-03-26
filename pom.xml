@@ -118,6 +118,7 @@
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
+          <sourcepath>src/main/java</sourcepath>
           <links>
             <link>https://docs.oracle.com/javase/8/docs/api/</link>
           </links>
@@ -180,6 +181,7 @@
             <manifestEntries>
               <Name>com/github/marschall/getrandom/</Name>
               <Sealed>true</Sealed>
+              <Multi-Release>true</Multi-Release>
             </manifestEntries>
           </archive>
           <descriptors>
