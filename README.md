@@ -15,7 +15,7 @@ A `SecureRandomSPI` that makes [getrandom()](http://man7.org/linux/man-pages/man
 * is a Java 9 module but works on Java 8
 * no dependencies outside the `java.base` module
 
-Likely benefints from [random number generator enhancements for Linux 5.17 and 5.18](https://www.zx2c4.com/projects/linux-rng-5.17-5.18/).
+Likely benefits from [random number generator enhancements for Linux 5.17 and 5.18](https://www.zx2c4.com/projects/linux-rng-5.17-5.18/).
 
 ## Usage
 
